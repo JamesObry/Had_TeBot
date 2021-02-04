@@ -14,7 +14,7 @@ mainKeyboard = types.InlineKeyboardMarkup()
 mainKey = types.InlineKeyboardButton(text='Сделать рассылку', callback_data='sendMessage')
 mainKeyboard.add(mainKey)
 
-bot = telebot.TeleBot('1618891760:AAEHOZP36ngovy_f_5fC-Bs1Wi4Apyi9JpA')
+bot = telebot.TeleBot('My token')
 
 @bot.message_handler(commands=['start'])
 def startMessage(message):
@@ -24,9 +24,9 @@ def startMessage(message):
         try:
             cur.execute(f"SELECT telegram_id FROM admin WHERE telegram_id = {message.chat.id}")
             id = cur.fetchone()[0]
-            if id == admin id:
+            if id == adminId:
                 bot.send_message(message.chat.id, 'Доступ открыт. ✅', reply_markup=mainKeyboard)
-            elif id != admin id:
+            elif id != adminId:
                 bot.send_message(message.chat.id, 'Доступ закрыт. ❌')
         except:
             bot.send_message(message.chat.id, 'У вас нету доступа к этому разделу. ❌')
